@@ -6,7 +6,7 @@ int main(void){
     ios::sync_with_stdio(0);
     cin.tie(0);
     
-    int G, P, arr[100000]={}, numarr[100000]={} , answer =0;
+    int G, P, arr[100002]={}, numarr[100002]={} , answer =0;
 
     cin>>G>>P;
 
@@ -22,12 +22,15 @@ int main(void){
                 break;
             }
             else{
-                a--;
+                int b = arr[a];
+                arr[a]++;
+                a-=b;
             }
         }
         if(a<=0){
             for(int i=1;i<=G;i++){
             if(arr[i]>0) answer++;
+            // cout<<"배열 : "<<arr[i]<<"\n";
             }
 
             cout<<answer<<endl;
