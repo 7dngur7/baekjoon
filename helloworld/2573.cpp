@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int arr[302][302]={}, checkarr[302][302], dx[]={0,-1,0,1}, dy[]={-1,0,1,0};
+int arr[302][302]={}, checkarr[302][302], dx[]={0,-1,0,1}, dy[]={-1,0,1,0}, minusarr[302][302]={};
 
 int main(void){
     ios::sync_with_stdio(0);
@@ -17,8 +17,8 @@ int main(void){
             maxnum = max(maxnum, arr[i][j]);
         }
     }
-
-    for(int a=0;a<maxnum;a++){
+    // cout<<maxnum<<"확인\n";
+    for(int a=0;a<100000;a++){
         int landnum=0;
 
         queue<pair<int,int> >q;
@@ -73,20 +73,36 @@ int main(void){
                         int newy=j+dy[k];
                         if(newx<0||newy<0) continue;
                         if(arr[newx][newy]==0){
-                            arr[i][j]--;
+                            minusarr[i][j]--;
                         }
 
                     }
                 }
             }
         }
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                arr[i][j]+=minusarr[i][j];
+                if(arr[i][j]<0) arr[i][j]=0;
+            }
+        }
 
-        //check 0으로
+        //check, minusarr 0으로
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 checkarr[i][j]=0;
+                minusarr[i][j]=0;
             }
         }
+
+        // //배열 테스트
+        // for(int i=0;i<n;i++){
+        //     for(int j=0;j<m;j++){
+        //         cout<<arr[i][j];
+        //     }
+        //     cout<<"\n";
+        // }
+        // cout<<"\n";
 
     }
 
