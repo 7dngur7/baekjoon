@@ -1,42 +1,41 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
 int main(void){
-    ios::sync_with_stdio(0); cin.tie(0);
-    long long biggest = 1000000000001;
-    long long smallest = 0 ;
-    long long answer = (biggest + smallest)/2;
-    vector<int> v;
+    ios::sync_with_stdio(0);
+    cin.tie(0);
 
-    int staff, baloon;
-    cin>>staff>>baloon;
+    int n, m;
+    cin>>n>>m;
 
-    for(int i = 0 ; i<staff; i++){
-        int a;
-        cin>>a;
-        v.push_back(a);
-    }
-    long long savenum = 0;
-    while(true){
-        int balcnt = 0;
-        for(int i = 0; i<staff; i++){
-            int min = v[i];
-            balcnt += answer/min;
-        }
+    long long left = 0;
+    long long right = 1000000000005;
 
-        if(balcnt > baloon){
-            smallest = (answer + smallest)/2;
-        }
-        else if(balcnt<baloon){
-            biggest = (answer + biggest)/2;
-        }
-        else if()
+    long long staff[1000005]={};
+
+    for(int i = 0; i<n; i++){
+        cin>>staff[i];
 
     }
 
-    
+    while(left+1<right){
+        long long mid = (left+right)/2;
+        long long cur_baloon = 0;
+        for(int i = 0 ;i<n; i++){
+                cur_baloon += mid / staff[i];
+        }
 
+       // cout<<"mid: "<<mid<<", curtree: "<<cur_tree<<"\n";
+
+        if(cur_baloon>=m) right = mid;
+        if(cur_baloon<m) left = mid;
+
+
+    }
+
+    cout<<right<<"\n";
 
 }
