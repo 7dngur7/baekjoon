@@ -1,45 +1,8 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
-using namespace std;
+        // for(int j=1; j<=n; j++){
+        //             for(int k=1; k<=n; k++){
 
+        //     cout<<  chkarr[j][k]<<" ";
+        //             }
+        //             cout<<"\n";
 
-vector<int> coin;
-
-int main(void){
-
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-int arr[10005]={};
-
-    int n, k;
-
-    cin>>n>>k;
-    for(int i=0; i<n; i++){
-        int coinnum;
-        cin>>coinnum;
-        coin.push_back(coinnum);
-    }
-    sort(coin.begin(), coin.end());
-
-    for(int i=1; i<=k; i++){
-        if(i%coin[0]==0){
-            arr[i] = 1;
-        }
-    }
-
-    for(int i=1; i<n; i++){
-        for(int j=1; j<k;j++){
-            if(j-coin[i]>=0){
-                cout<<"test: "<<arr[j]<<" "<<arr[j-coin[i]]<<"\n";
-                arr[j]= arr[j]+ arr[j-coin[i]];
-                cout<<arr[j]<<"\n";
-            }
-        }
-    }
-    for(int i=1; i<=k; i++){
-            cout<<arr[k]<<" ";
-
-    }
-    //cout<<arr[k]<<"\n";
-}
+        // }
