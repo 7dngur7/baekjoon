@@ -1,59 +1,51 @@
 #include <iostream>
-#include <queue>
+#include <deque>
 
 using namespace std;
 
 int chkarr[200005]={};
-queue<int> q;
+deque<int> q;
 
-int xarr[3]={-1, 1, 0};
+int xarr[3]={-1, 1};
+
+int n, k;
 
 int main(void){
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int a, b;
+    cin>>n>>k;
 
-    cin>>a>>b;
-
-    q.push(a);
-    //chkarr[a] = 1;
-
-    while(!q.empty()){
+    q.push_back(n);
+    chkarr[n]=1;
+    while (!q.empty()){
         int cur = q.front();
-        q.pop();
+        q.pop_front();
 
-        cout<<"cur: "<<cur<<"\n";
+        //cout<<cur<<" "<<xarr[cur]<<"\n";
 
-        for(int i=0; i<3; i++){
-            if(xarr[i]==0){
-                int xcur = cur;
-                while(xcur<b*2){
-                    xcur *=2;
-
-                    cout<<xcur<<"--\n";
-                    if(xcur<0)continue;
-                    if(chkarr[xcur]!=0 && chkarr[xcur]<=chkarr[cur] && xcur==0)break;
-                    if(chkarr[xcur]!=0 && chkarr[xcur]<=chkarr[cur])continue;
-                    
-                    chkarr[xcur]=chkarr[cur];
-                    q.push(xcur);
-                }
+        int a = cur;
+        while(a<=k){
+            a*=2;
+            if(chkarr[a]>chkarr[cur] || chkarr[a]==0 ){
+                q.push_back(a);
+                chkarr[a]= chkarr[cur];
             }
-            else{
-                int xcur = cur + xarr[i];
-
-                if(xcur>200000 || xcur<0)continue;
-                if(chkarr[xcur]!=0 && chkarr[xcur]<chkarr[cur]+1)continue;
-
-                chkarr[xcur]=chkarr[cur]+1;
-                q.push(xcur);
-            }
+            if(a==0) break;
         }
 
+        for(int i=0; i<2; i++){
+            int xcur = cur + xarr[i];
+
+            if(xcur<0||xcur>200000)continue;
+            if(chkarr[xcur]!=0 && chkarr[xcur]<chkarr[cur]+1) continue;
+
+            q.push_back(xcur);
+            chkarr[xcur]=chkarr[cur]+1;
+        }
     }
 
-    cout<<chkarr[b]<<"\n";
-
-
+    cout<<chkarr[k]-1<<"\n";
+    
+    
 }

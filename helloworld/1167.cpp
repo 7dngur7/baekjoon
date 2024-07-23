@@ -4,6 +4,7 @@
 using namespace std;
 
 int arr[100005][100005];
+int chkarr[100005][100005];
 
 int main(void){
     ios::sync_with_stdio(0);
@@ -37,7 +38,6 @@ int main(void){
     // cout<<"\n";
     int answer =0;
     for(int i=1; i<=v; i++){
-
         for(int j=1; j<=v; j++){
             if(arr[i][j]!=0){
                 stack< pair<int,int> >s;
