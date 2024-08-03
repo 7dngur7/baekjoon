@@ -42,7 +42,7 @@ int main(void){
      for(int i=0; i<m; i++){
         for(int j=0; j<n; j++){
             if(chkarr[i][j]==0){
-                int curans = 0;
+                int curans = 1;
                 q.push(make_pair(i,j));
                 chkarr[i][j]=1;
 
@@ -51,7 +51,6 @@ int main(void){
                     q.pop();
 
                     //cout<<"curchk:"<<cur.first<<" "<<cur.second<<"\n";
-                    curans++;
                     
                     for(int i=0; i<4; i++){
                         int curx=cur.first+xarr[i];
@@ -62,6 +61,8 @@ int main(void){
 
                         chkarr[curx][cury]=1;
                         q.push(make_pair(curx,cury));
+                        curans++;
+
                     }
                 }
 
