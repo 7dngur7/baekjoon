@@ -38,7 +38,7 @@ void func(int arrnum){
     if(arrnum == v.size()){
         for(int i=0; i<9; i++){
             for(int j=0; j<9; j++){
-                cout<<sudoarr[i][j];
+                cout<<sudoarr[i][j]<<" ";
             }
             cout<<"\n";
         }        
@@ -62,11 +62,8 @@ int main(void){
     cin.tie(0);
 
     for(int i=0; i<9; i++){
-        string a;
-        cin>>a;
-
         for(int j=0; j<9; j++){
-            sudoarr[i][j]=a[j]-'0';
+            cin>>sudoarr[i][j];
             if(sudoarr[i][j]==0){
                 v.push_back(make_pair(i,j));
             }
