@@ -4,17 +4,17 @@
 
 using namespace std;
 
-vector<int> arr;
+vector<long> arr;
 
 int main(void){
     ios::sync_with_stdio(0);
     cin.tie(0);
 
-    int n;
+    long n;
     cin>>n;
 
-    for(int i=0; i<n; i++){
-        int a;
+    for(long i=0; i<n; i++){
+        long a;
 
         cin>>a;
         arr.push_back(a);
@@ -28,7 +28,7 @@ int main(void){
     // cout<<"\n";
 
     long ansnum = 3000000001;
-    vector<int> ansarr;
+    vector<long> ansarr;
 
     // int lowest = 0;
     // int highest = arr.size()-1;
@@ -56,16 +56,16 @@ int main(void){
         
     // }
 
-    for(int i= 1; i<n-1; i++){
+    for(long i= 1; i<n-1; i++){
             
-        int lowest = 0;
-        int highest = arr.size()-1;
+        long lowest = 0;
+        long highest = arr.size()-1;
 
         while(lowest<highest){
             long cur=arr[lowest]+arr[highest]+ arr[i];
 
             if(abs(cur)< abs(ansnum)){
-                ansnum = cur+arr[i];
+                ansnum = cur;
 
                 ansarr.clear();
                 ansarr.push_back(arr[lowest]);
