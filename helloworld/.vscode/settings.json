@@ -16,6 +16,7 @@
         "ostream": "cpp",
         "ios": "cpp",
         "stack": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "tuple": "cpp"
     }
 }

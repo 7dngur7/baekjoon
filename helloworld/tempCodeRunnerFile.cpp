@@ -1,5 +1,4 @@
 
-    // for(int i=1; i<=n; i++){
-    //     cout<<narr[i]<<" ";
+    // for(int i=0; i<arr[r].size(); i++){
+    //     write_parent(arr[r][i].first, r);
     // }
-    // cout<<"\n";
