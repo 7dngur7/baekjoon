@@ -4,8 +4,6 @@
 using namespace std;
 
 int arr[1500][1500]={};
-int xPlusArr[1500][1500]={};
-int yPlusArr[1500][1500]={};
 
 
 vector<pair<int,int> > xyarr;
@@ -18,40 +16,28 @@ int main(void){
     cin>>n>>m;
 
     for(int i=1; i<=n; i++){
-        for(int j=0; j<=n; j++){
+        for(int j=1; j<=n; j++){
             cin>>arr[i][j];
         }
     }
 
-    int xPlus = 0;
-    int yPlus = 0;
     for(int i=1; i<=n; i++){
         for(int j=0; j<=n; j++){
-            xPlus += arr[i][j];
-            xPlusArr[i][j] = xPlus;
-
-            yPlus += arr[j][i];
-            yPlusArr[j][i] = yPlus;
+            arr[i][j] += arr[i-1][j];
         }
     }
 
-
-    for(int i=0; i<m; i++){
-        int a, b, c, d;
-        cin>>a>>b>>c>>d;
-        xyarr.push_back(make_pair(a,b));
-        xyarr.push_back(make_pair(c,d));
+    for(int i=1; i<=n; i++){
+        for(int j=0; j<=n; j++){
+            arr[i][j] += arr[i][j-1];
+        }
     }
 
     for(int i=0; i<m; i++){
-        pair<int,int> startPair, endPair;
+        int x1, y1, x2, y2;
+        cin>>x1>>y1>>x2>>y2;
 
-        startPair = xyarr[2*i];
-        endPair = xyarr[2*i+1];
-
-        int ans = xPlusArr[endPair.first][endPair.second]
-                + xPlusArr[startPair.first-1][startPair.second];
-
+        cout<<""<< arr[x2][y2] - arr[x2][y1-1] - arr[x1-1][y2] + arr[x1-1][y1-1]<<"\n";
     }
 
 
