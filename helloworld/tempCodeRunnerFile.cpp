@@ -1,7 +1,5 @@
-    // cout<<"\n";
-    // for(int i=0; i<n; i++){
-    //     for(int j=0; j<m; j++){
-    //         cout<<chkarr[i][j];
-    //     }
-    //     cout<<"\n";
-    // }
+    if(bombflag>0){
+                for(int i=0; i<bombstr.size(); i++){
+                    answer.pop_back();
+                }
+            }
